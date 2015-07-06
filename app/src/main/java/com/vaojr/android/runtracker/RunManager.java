@@ -37,7 +37,7 @@ public class RunManager {
         return PendingIntent.getBroadcast(mAppContext, 0, broadcast, flags);
     }
 
-    private void startLocatioUpdates() {
+    public void startLocationUpdates() {
         String provider = LocationManager.GPS_PROVIDER;
 
         // Start updates from the location manager
