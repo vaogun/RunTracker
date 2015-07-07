@@ -8,6 +8,7 @@ import android.content.SharedPreferences;
 import android.location.Location;
 import android.location.LocationManager;
 import android.util.Log;
+import com.vaojr.android.runtracker.RunDatabaseHelper.RunCursor;
 
 public class RunManager {
     private static final String TAG = "RunManager";
@@ -110,6 +111,10 @@ public class RunManager {
         Run run = new Run();
         run.setId(mHelper.insertRun(run));
         return run;
+    }
+
+    public RunCursor queryRuns() {
+        return mHelper.queryRuns();
     }
 
     public void insertLocation(Location loc) {
