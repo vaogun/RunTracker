@@ -35,7 +35,7 @@ public class RunDatabaseHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         // Create the "run" table
         db.execSQL("CREATE TABLE RUN (" +
-                    "_ID INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                    "_id INTEGER PRIMARY KEY AUTOINCREMENT, " +
                     "START_DATE INTEGER)");
         // Create the "location" table
         db.execSQL("CREATE TABLE LOCATION (" +
