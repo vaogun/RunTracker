@@ -34,15 +34,15 @@ public class RunDatabaseHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         // Create the "run" table
-        db.execSQL("CREATE TABLE RUN (" +
-                    "_id INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                    "START_DATE INTEGER)");
+        db.execSQL("create table run (" +
+                    "_id integer primary key autoincrement, " +
+                    "start_date integer)");
         // Create the "location" table
-        db.execSQL("CREATE TABLE LOCATION (" +
-                "TIMESTAMP INTEGER, LATITUDE REAL, " +
-                "LONGITUDE REAL, ALTITUDE REAL, " +
-                "PROVIDER VARCHAR(100), " +
-                "RUN_ID INTEGER REFERENCES RUN(_ID))");
+        db.execSQL("create table location (" +
+                "timestamp integer, latitude real, " +
+                "longitude real, altitude real, " +
+                "provider varchar(100), " +
+                "run_id integer references run(_id))");
     }
 
     @Override
