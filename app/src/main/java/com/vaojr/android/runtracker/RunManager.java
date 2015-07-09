@@ -9,6 +9,7 @@ import android.location.Location;
 import android.location.LocationManager;
 import android.util.Log;
 import com.vaojr.android.runtracker.RunDatabaseHelper.RunCursor;
+import com.vaojr.android.runtracker.RunDatabaseHelper.LocationCursor;
 
 public class RunManager {
     private static final String TAG = "RunManager";
@@ -113,6 +114,22 @@ public class RunManager {
         return run;
     }
 
+    public Run getRun(long id) {
+        Run run = null;
+        RunCursor cursor = mHelper.queryRun(id);
+        cursor.moveToFirst();
+
+        // If you got a row, get a run
+        if (!cursor.isAfterLast())
+            run = cursor.getRun();
+        cursor.close();
+        return run;
+    }
+
+    public boolean isTrackingRun(Run run) {
+        return run != null && run.getId() == mCurrentRunId;
+    }
+
     public RunCursor queryRuns() {
         return mHelper.queryRuns();
     }
@@ -123,5 +140,17 @@ public class RunManager {
         } else {
             Log.e(TAG, "Location received with no tracking run; ignoring");
         }
+    }
+
+    public Location getLastLocationForRun(long runId) {
+        Location location = null;
+        LocationCursor cursor = mHelper.queryLastLocationForRun(runId);
+        cursor.moveToFirst();
+
+        // If you get a row, get a location
+        if (!cursor.isAfterLast())
+            location = cursor.getLocation();
+        cursor.close();
+        return location;
     }
 }
