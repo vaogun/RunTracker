@@ -142,6 +142,10 @@ public class RunManager {
         }
     }
 
+    public LocationCursor queryLocationsForRun(long runId) {
+        return mHelper.queryLocationsForRun(runId);
+    }
+
     public Location getLastLocationForRun(long runId) {
         Location location = null;
         LocationCursor cursor = mHelper.queryLastLocationForRun(runId);
